@@ -1,7 +1,14 @@
-<h2><%= @item.name %> </h2>
-<h3><%= @item.producer %> </h3>
+<h2>name:     <%= @item.name %> </h2>
+<h3>Producer: <%= @item.producer %> </h3>
+<h4>Category: <%= @item.category.name%> </h4>
 <p><%= @item.description %></p>
 
+
 <%= link_to "Back", items_path%>
-<%= link_to "Edit", edit_item_path(@item)%>
-<%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<% if user_signed_in? %>
+ <% if @item.user_id == current_user.id%>
+   <%= link_to "Edit", edit_item_path(@item)%>
+   <%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
+ <% end %> 
+<% end%>

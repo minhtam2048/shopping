@@ -1,7 +1,12 @@
-<%= simple_form_for @item do |f|  %>
- <%= f.input :code, label: "Code" %>
- <%= f.input :name %>
- <%= f.input :description %>
- <%= f.input :producer %>
- <%= f.button :submit %>
+<%= simple_form_for @item, :html => { :multipart => true }  do |f|  %>
+ <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select add category") %><br />
+ <%= f.label :code %>
+ <%= f.text_field :code, class: "form-control"%>
+ <%= f.label :name %>
+ <%= f.text_field :name, class: "form-control"%>
+ <%= f.input :description%>
+ <%= f.label :producer %>
+ <%= f.text_field :producer, class: "form-control"%>
+ <%= f.submit "Create", class: "btn btn-primary" %>
+ 
 <% end %>

@@ -1,3 +1,15 @@
-<% @items.each do |item| %>
-  <h2><%=link_to item.name, item_path(item) %> </h2>
+<h1 class="current-category"><%= params[:category] %></h1>
+<% if @items.count == 0 %>
+  <h1>Don't have any books in this categories</h1>
+<% else %>
+   <div class = "row">
+     <% @items.each do |item| %>
+     <div class= "col-md-3">
+        <h2><%= link_to item.name, item_path(item) %></h2> 
+        
+     </div>
+     <% end %>
+   </div>
+
 <% end %>
+
