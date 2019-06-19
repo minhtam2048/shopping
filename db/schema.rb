@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_140816) do
+ActiveRecord::Schema.define(version: 2019_06_19_083335) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2019_06_18_140816) do
     t.string "item_img_content_type"
     t.bigint "item_img_file_size"
     t.datetime "item_img_updated_at"
+    t.float "price", default: 1000.0
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_140816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

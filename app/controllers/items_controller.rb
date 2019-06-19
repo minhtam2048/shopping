@@ -6,23 +6,31 @@ class ItemsController < ApplicationController
        
         if params[:category].blank?
             @items = Item.all.order("created_at DESC")
-            
-        else 
+        end    
+        
+        if params[:category]
             
             @category_id = Category.find_by(name: params[:category]).id
             
             @items = Item.where(category_id: @category_id).order("created_at DESC")
         end
+           
     end
     
 
     def show
+        if @item.reviews.blank?
+            @average_review = 0
+        else  
+            @average_review = @item.reviews.average(:rating).round(2)  
+        end
     end
 
     def new
         # @item = Item.new
         @item = current_user.items.build
         @categories = Category.all.map{ |c| [c.name, c.id] }
+        
     end
     
     
@@ -41,7 +49,8 @@ class ItemsController < ApplicationController
         @item = current_user.items.build(item_params)
         @item.category_id = params[:category_id]
         if @item.save
-           redirect_to items_path
+           flash[:success] = "Creating item success"
+           redirect_to ur_stores_path
         else
             render 'new'
         end 
@@ -53,7 +62,7 @@ class ItemsController < ApplicationController
     
     def destroy
         @item.destroy
-        redirect_to items_path
+        redirect_to ur_stores_path
     end
 
     private

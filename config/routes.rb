@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/about'
  
+  resources :ur_stores
    
  as :user do
   get "signin" => "devise/sessions#new"
   post "signin" => "devise/sessions#create"
   delete "signout" => "devise/sessions#destroy"
  end
+ 
 
- resources :items
+ resources :items do 
+  resources :reviews
+ end
+
 end
