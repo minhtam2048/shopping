@@ -1,5 +1,6 @@
 <%= simple_form_for @item, :html => { :multipart => true }  do |f|  %>
  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select add category") %><br />
+ <%= f.file_field :item_img %>
  <%= f.label :code %>
  <%= f.text_field :code, class: "form-control"%>
  <%= f.label :name %>

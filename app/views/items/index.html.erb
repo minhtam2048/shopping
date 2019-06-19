@@ -4,10 +4,15 @@
 <% else %>
    <div class = "row">
      <% @items.each do |item| %>
+     
      <div class= "col-md-3">
+     <a href = "/items/<%= item.id %>">
+         <%= image_tag item.item_img.url(:item_index), class: "item" %>
+     </a>
         <h2><%= link_to item.name, item_path(item) %></h2> 
         
      </div>
+     
      <% end %>
    </div>
 

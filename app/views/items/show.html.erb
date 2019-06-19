@@ -1,8 +1,21 @@
-<h2>name:     <%= @item.name %> </h2>
-<h3>Producer: <%= @item.producer %> </h3>
-<h4>Category: <%= @item.category.name%> </h4>
-<p><%= @item.description %></p>
+<div class= "row">
+  <div class="col-md-4">
+  <%= image_tag @item.item_img.url(:item_show), class: "item-show" %>
+  </div>
 
+  <div class="col-md-8">
+    <h2>name:     <%= @item.name %> </h2>
+    <h3>Producer: <%= @item.producer %> </h3>
+    <h4>Category: <%= @item.category.name%> </h4>
+    <p><%= @item.description %></p>
+  </div>
+</div>
+
+<div class= "row">
+   <div class="col-md-4">
+     
+   </div>
+</div>
 
 <%= link_to "Back", items_path%>
 
