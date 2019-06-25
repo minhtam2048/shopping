@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
             
             @items = Item.where(category_id: @category_id).order("created_at DESC")
         end
-           
+        
+        
     end
     
 
@@ -45,7 +46,6 @@ class ItemsController < ApplicationController
     end
 
     def create 
-        # @item = Item.new(item_params)
         @item = current_user.items.build(item_params)
         @item.category_id = params[:category_id]
         if @item.save
@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
            redirect_to ur_stores_path
         else
             render 'new'
-        end 
+        end
     end
 
     def edit

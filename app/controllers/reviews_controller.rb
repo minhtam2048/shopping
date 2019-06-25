@@ -11,11 +11,20 @@ class ReviewsController < ApplicationController
         @review = Review.new(review_params)
         @review.item_id = @item.id
         @review.user_id = current_user.id
+        
+        # if @review.save
+        #     redirect_to item_path(@item)
+        # else
+        #     render 'new'
+        # end
 
-        if @review.save
-            redirect_to item_path(@item)
-        else
-            render 'new'
+        respond_to do |format|
+            if @review.save
+            format.js
+            format.html { redirect_to item_path(@item)}
+            else
+                format.html { render :new}
+            end
         end
     end
 

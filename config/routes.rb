@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get 'order_items/create'
+  # get 'order_items/update'
+  # get 'order_items/destroy'
   devise_for :users
   root 'static_pages#home'
   get 'static_pages/help'
@@ -17,4 +20,9 @@ Rails.application.routes.draw do
   resources :reviews
  end
 
+ resources :carts
+ 
+ resources :order_items
+
+ 
 end

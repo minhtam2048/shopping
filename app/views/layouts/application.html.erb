@@ -35,23 +35,17 @@
               <li><%= link_to category.name, items_path(category: category.name), class: "link" %></li>   
             </li>  
             <% end %>
-           
           </ul>
         </li>
+
+        
          
         <% if user_signed_in?%>
              <li><%= link_to "Add item", new_item_path %></li>
              <li><%= link_to "Your store",ur_stores_url %></li>
              <li><a>your account: <%= current_user.money %></a></li>
-        
         <% end %>
-
-        
-
        </ul>
-
-       
-
     </div>
 
     </nav>
