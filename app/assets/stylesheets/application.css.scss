@@ -143,10 +143,10 @@ p.alert, p.notice {
 /* styles */
 
 .item {
-	height: 350px;
+	height: 300px;
 	width: 250px;
-	margin-bottom: 40px;
-	@include background-tile;
+	margin-bottom: 20px;
+	// @include background-tile;
 }
 
 .item-show {

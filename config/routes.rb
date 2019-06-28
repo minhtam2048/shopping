@@ -20,9 +20,17 @@ Rails.application.routes.draw do
   resources :reviews
  end
 
- resources :carts
+ resources :cart
  
- resources :order_items
+ resources :orders do
+    resources :order_items
+ end
+ 
+ 
 
- 
+ resources :conversations do
+   resources :messages
+ end
+
+ resources :users
 end

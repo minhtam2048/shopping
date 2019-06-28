@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
     
+    helper_method :current_order
+
+    def current_order
+        session[:shopping_cart] ||= []
+    end
     
-  
+   
     def home 
     end
 
@@ -14,7 +19,7 @@ class ApplicationController < ActionController::Base
     def about
     end
 
-   
+    
 
     protected
 
@@ -24,5 +29,11 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password)}
     end
     
-  
+    private
+    def cart_token
+      return @cart_token unless @cart_token.nil?
+      session[:cart_token]  ||= SecureRandom.hex(8)
+      @cart_token = session[:cart_token]
+    end
+    
 end

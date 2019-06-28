@@ -2,18 +2,31 @@
   <div class="col-md-4">
   <%= image_tag @item.item_img.url(:item_show), class: "item-show" %>
   </div>
-
+  
   <div class="col-md-8">
     <div class= "item-info">
-     <h2 class = "item-title">name:     <%= @item.name %> </h2>
+     
+    
+     
+     <h3 class = "item-producer">From: <%=link_to @item.user.name, user_path(@item.user_id) %></h3>
      <h3 class = "item-producer">Producer: <%= @item.producer %> </h3>
+     
      <h2>Avarage rating</h2>
      <div class= "average-review-rating" data-score=<%= @average_review %>></div>
      <span class ="number-of-reviews">Based on <%= @item.reviews.count %> reviews</span>
      <h4>Category: <%= @item.category.name%> </h4>
      <h5>Price:    <%= @item.price %></h5>
+     <%= submit_tag "Add to cart"  %>
      <p class= "item-desc"><%= @item.description %></p>
+     <%
+=begin%>
+ <h2>see more product from<%= link_to @item.user.name,   %> 
+<%
+=end%>
   </div>
+   
+  
+
 </div>
 
 
@@ -21,7 +34,9 @@
 <div class = "row">
   <div class = "col-md-4">
     <div class ="reviews">
-       
+       <div id = 'new-review'>
+          <%= render @item.reviews %>
+       </div>
     </div>
   </div>
 </div>

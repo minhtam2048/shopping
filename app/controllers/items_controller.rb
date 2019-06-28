@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :edit]
     
     def index
+
        
         if params[:category].blank?
             @items = Item.all.order("created_at DESC")
@@ -15,6 +16,7 @@ class ItemsController < ApplicationController
             @items = Item.where(category_id: @category_id).order("created_at DESC")
         end
         
+       
         
     end
     
@@ -25,6 +27,7 @@ class ItemsController < ApplicationController
         else  
             @average_review = @item.reviews.average(:rating).round(2)  
         end
+
     end
 
     def new
