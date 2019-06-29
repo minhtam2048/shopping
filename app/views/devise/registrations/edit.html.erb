@@ -24,7 +24,18 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class ="row">
+       <div class = "col-sm-4" >
+         <%=  if resource.avatar.attached? %>
+            <%= image_tag resource.avatar.variant(resize: "100x100!")  %>
+         <% else %>
+         <%= image_tag gravatar_image_url(current_user.email, size: 100), height: 100, width: 100, class: "rounded-circle" %>
+         <% end %>    
+       </div>
+       <div class = "col-sm-8">
+             <%= f.file_field :avatar %>
+       </div>
+    </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>

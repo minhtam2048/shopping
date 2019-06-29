@@ -1,0 +1,86 @@
+body {
+    background-color: #DDD;
+    text-align: center;
+  }
+  
+  // Colors 
+  $blue: #2980b9;
+  $fb-color: #3b5998;
+  $twitter-color: #1da1f2;
+  
+  // Mixins
+  @mixin borderRadius($radius-value) {
+    -webkit-border-radius: $radius-value;
+    -moz-border-radius: $radius-value;
+    -ms-border-radius: $radius-value;
+    -os-border-radius: $radius-value;
+  }
+  
+  @mixin fontSize($size) {
+    font-size: $size;
+  }
+  
+  // Login Form - Style it 
+  .login-main {
+    width: 45%;
+    margin: 50px auto;
+    background-color: #FFF;
+    padding: 5px 10px;
+    text-align: left;
+    h1 {
+      text-align: left;
+      font-weight: 100;
+      font-family: 'Source Sans Pro';
+      margin: 15px 15px 25px;
+      color: $blue;
+    }
+    input:not([type='checkbox']) {
+      border: 2.5px solid #ddd;
+      width: 95%;
+      display: block;
+      margin: 15px auto;
+      padding: 15px 20px;
+      &:focus {
+        box-shadow: none;
+        border: 2.5px solid #3498db;
+      }
+    }
+    input[type='checkbox'] {
+      width: 35px;
+      margin-top: 20px;
+      &:focus {
+        box-shadow: none;
+        border: none;
+      }
+    }
+    .accept-and-remember {
+      button {
+        float: right;
+        margin-right: 3.2%;
+        padding: 16px;
+        font-family: 'roboto';
+      }
+    }
+    hr {
+      border-color: rgba(251, 251, 251, 0.43);
+    }
+    .social-login {
+      button {
+        width: 95%;
+        margin: 10px auto;
+        padding: 23px;
+        display: block;
+        font-family: 'ROboto';
+        text-align: left;
+        &:first-child {
+          background-color: $fb-color;
+          margin-top: 25px;
+          &:hover { background-color: #1565C0; }
+        }
+        &:last-child { background-color: $twitter-color; &:hover { background-color: #42A5F5; } }
+        i {
+          margin-right: 13px
+        }
+      }
+    }
+  }

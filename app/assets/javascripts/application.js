@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-sprockets
 //= require activestorage   
 //= require private_pub
 //= require chat

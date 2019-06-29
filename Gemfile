@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'private_pub'
 gem 'thin'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

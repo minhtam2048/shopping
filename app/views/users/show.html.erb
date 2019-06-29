@@ -8,6 +8,9 @@
           <h4 class="pinline"><%= t ".my_profile" %></h4>
         </div>
           <%= form_for @user do |f| %>
+            <% if @user.avatar.attached?  %>
+               <img src = "<%=(url_for(@user.avatar)) %>">
+            <% end %>
             <%= f.label :username %>
             <%= f.text_field :name, class: "form-control", disabled: true%>
             <%= f.label :email %>
