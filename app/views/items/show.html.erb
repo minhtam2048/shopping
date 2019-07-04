@@ -8,20 +8,19 @@
      
     
      
-     <h3 class = "item-producer">From: <%=link_to @item.user.name, items_path(@item.user_id) %></h3>
+     <h3 class = "item-producer">From: <%=link_to @item.ur_store.name, ur_store_path(@item.ur_store.id) %></h3>
      <h3 class = "item-producer">Producer: <%= @item.producer %> </h3>
      
      <h2>Avarage rating</h2>
      <div class= "average-review-rating" data-score=<%= @average_review %>></div>
      <span class ="number-of-reviews">Based on <%= @item.reviews.count %> reviews</span>
-     <h4>Category: <%= @item.category.name%> </h4>
+     <h4>Category: <%= @item.category.name%> </h4> 
      <h5>Price:    <%= @item.price %></h5>
-     <%= submit_tag "Add to cart"  %>
+     <%= button_to "Add to cart" ,line_items_path(item_id: @item) , class: 'btn btn-success'%>
      <p class= "item-desc"><%= @item.description %></p>
-     <%
-=begin%>
- <h2>see more product from<%= link_to @item.user.name,   %> 
-<%
+     
+    <h2> see more product from<%= link_to @item.ur_store.name, ur_store_path(@item.ur_store.id)   %></h2> 
+
 =end%>
   </div>
    
@@ -44,110 +43,6 @@
 <%= render "reviews/form" %>
 
 
-
-
-<div class ="links-btn-group">
-  <%= link_to "Back", items_path, class: "btn btn-custom"%>
-   <% if user_signed_in? %>
-      <% if @item.user_id == current_user.id%>
-         <%= link_to "Edit", edit_item_path(@item)%>
-         <%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
-      <% end %> 
-   <% end%>
-</div>
-
-
-<canvas></canvas>
-
-<div class="product-card">
-  <div class="kb-card">
-    <div class="kb-card__body kb-row">
-      <div class="kb-col kb-col--50 product-card__left">
-        <div class="product-card__back">
-          <button>
-            <i class="material-icons">arrow_back</i>
-          </button>
-        </div>
-        <h3 class="product-card__name">
-          Nook
-        </h3>
-        <p class="product-card__subname">
-          Lounge Chair
-        </p>
-        <p class="product-card__price kb-color-text--black">$320.00</p>
-        <div class="product-card__image">
-        </div>
-      </div>
-      <div class="kb-col kb-col--50 product-card__right">
-        <p class="product-card__description">
-          Designer Karim Rashid continues to put his signature spin on all genres of design through various collaborations with top-notch companies. Another one to add to the win column is his work with Italian manufacturer Chateau d'Ax.
-        </p>
-        <div class="product-card__availability">
-          <p class="product-card__text">
-            In stock.
-            <a class="kb-link">
-              Buy Extended Warranty
-            </a>
-          </p>
-        </div>
-        <div class="product-card__ratings">
-          <ul class="kb-lists">
-            <li class="kb-lists__item">
-              <i class="material-icons active">star</i>
-            </li>
-            <li class="kb-lists__item">
-              <i class="material-icons active">star</i>
-            </li>
-            <li class="kb-lists__item">
-              <i class="material-icons active">star</i>
-            </li>
-            <li class="kb-lists__item">
-              <i class="material-icons active">star</i>
-            </li>
-            <li class="kb-lists__item">
-              <i class="material-icons">star</i>
-            </li>
-          </ul>
-          <span class="product-card__review">
-            (4.67 - 172 reviews)
-          </span>
-        </div>
-        <div class="product-card__quantity">
-          <span class="kb-card__support-text">
-            Quantity
-          </span>
-          <div class="kb-carousel">
-            <button class="kb-carousel__left">
-              <i class="material-icons">keyboard_arrow_left</i>
-            </button>
-            <span class="kb-carousel__content">
-              03
-            </span>
-            <button class="kb-carousel__right">
-              <i class="material-icons">keyboard_arrow_right</i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="kb-card__footer kb-row">
-      <div class="kb-col kb-col--50">
-        <p class="kb-card__support-text">
-          Total Price
-        </p>
-        <p class="product-card__price kb-color-text--primary">
-          $960.00
-        </p>
-      </div>
-      <div class="kb-col kb-col--50 kb-right kb-add-to-cart">
-        <a class="kb-button--link kb-color-text--primary">
-          Add to Cart
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

@@ -1,0 +1,16 @@
+<% provide(:title, "Category") %>
+<h1>List Category</h1>
+<%= render "shared/search"%>
+<% if user_signed_in? && current_user.role == 1  %>
+	<div> 
+    	<h3 style="text-align: center;"><%= link_to "CATEGORY", new_category_path, class: "glyphicon glyphicon-plus"%></h3>
+    	<span><%=render "excel" %></span>
+  	</div>
+<%end%>
+
+
+<ul class="categories">
+   <%= render @categories %>
+</ul>
+
+

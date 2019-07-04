@@ -1,0 +1,14 @@
+<li class="col-12 col-md-6 col-lg-3" style="padding: 50px 0px"> 
+   
+  <div class="cnt-block equal-hight" style="height: 349px;">
+      <figure>
+      	<a href="/items/<%= item.id %>">
+      		<%= image_tag item.item_img.url(:item_index), class: "item"%>
+      	</a>
+      </figure>
+      <p><%= link_to item.name , item,%></p>
+	  <ul class="follow-us clearfix">
+	  	
+	  </ul>
+  </div>
+</li>

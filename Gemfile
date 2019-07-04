@@ -7,12 +7,22 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.3'
 gem "devise", "~> 4.1"
 gem 'redis'
+gem 'faker'
+
+gem 'cocoon'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'paperclip', '~> 6.1'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'ransack'     # tạo form tìm kiếm
 gem 'private_pub'
 gem 'thin'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'pagy' 
+gem 'kaminari'    
+gem 'font-awesome-sass'
+
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

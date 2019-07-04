@@ -26,6 +26,18 @@
            <% else %>
                <li><%= link_to "Log in", new_user_session_path %></li>
            <% end %>
+
+            <% if total_cart_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+                 <li class="icon is-small">
+                    <i class="fa fa-shopping-cart"></i>
+                 </li>
+                 <li>Cart
+                    <%= cart_count_over_one %>
+                 </li>
+              <% end %>
+          <% end %>
+        
         </ul>
        
        <ul class="nav navbar-nav navbar-right"> 
@@ -41,13 +53,19 @@
             <% end %>
           </ul>
         </li>
+
         
 
          
         <% if user_signed_in?%>
-         <li><%= link_to "profile", user_path(current_user.id) %></li>
-             <li><%= link_to "Your store",ur_stores_url %></li>
-             <li><a>your account: <%= current_user.money %></a></li>
+            <li><%= link_to "profile", user_path(current_user.id) %></li>
+               <% if !current_user.ur_store || !current_user.ur_store.id %>
+                  <li><%= link_to "Your store", new_ur_store_path %></li>
+                <% else %>
+                  <li><%= link_to current_user.ur_store.name, ur_store_path(current_user.ur_store.id) %></li>
+               <% end %>
+
+             <li><a>account: <%= number_to_currency(current_user.money) %></a></li>
         <% end %>
        </ul>
     </div>

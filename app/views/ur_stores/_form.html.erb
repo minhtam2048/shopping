@@ -1,0 +1,9 @@
+
+<%= form_for @ur_store, :html => { :multipart => true }   do |f|  %>
+ 
+ <%= f.text_field :name, class: "form-control"%>
+ <%= f.label :name %>
+ 
+ <%= f.submit "Create", class: "btn btn-primary" %>
+ 
+<% end %>

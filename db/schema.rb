@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_150616) do
+ActiveRecord::Schema.define(version: 2019_07_02_010349) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 2019_06_28_150616) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -53,8 +58,10 @@ ActiveRecord::Schema.define(version: 2019_06_28_150616) do
     t.string "name", null: false
     t.text "description"
     t.string "producer"
+    t.integer "quantity", default: 1234
     t.decimal "price", precision: 12, scale: 3, default: "10000.0"
     t.boolean "active"
+    t.integer "ur_store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -63,6 +70,17 @@ ActiveRecord::Schema.define(version: 2019_06_28_150616) do
     t.string "item_img_content_type"
     t.bigint "item_img_file_size"
     t.datetime "item_img_updated_at"
+    t.index ["ur_store_id"], name: "index_items_on_ur_store_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["item_id"], name: "index_line_items_on_item_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -75,28 +93,10 @@ ActiveRecord::Schema.define(version: 2019_06_28_150616) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_order_items_on_item_id"
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-  end
-
   create_table "order_statuses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "total_price"
-    t.integer "order_status_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 2019_06_28_150616) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "item_id"
+  end
+
+  create_table "ur_stores", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ur_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

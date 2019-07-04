@@ -6,6 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create!(name:  "admin",
+    email: "admin@gmail.com",
+    password:              "123456",
+    password_confirmation: "123456",
+    role: 1)
+
+30.times do |n|
+        name  = Faker::Name.name
+        email = "example#{n+1}@gmail.com"
+        password = "Luongminhtam123"
+        User.create!(name:  name,
+                     email: email,
+                     password:              password,
+                     password_confirmation: password,
+                     role: 2)
+end    
 
 
 
@@ -20,3 +36,10 @@ OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Placed"
 OrderStatus.create! id: 3, name: "Shipped"
 OrderStatus.create! id: 4, name: "Cancelled"
+
+
+Category
+categories = ["Textbook","Novel", "Pet","History", "House tool", "Politic", "Car", "Computer", "Toy", "Board Game"]
+categories.each do |category|
+	Category.create!(name: category)
+end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   # get 'order_items/create'
   # get 'order_items/update'
   # get 'order_items/destroy'
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/about'
  
-  resources :ur_stores
    
  as :user do
   get "signin" => "devise/sessions#new"
@@ -20,17 +21,18 @@ Rails.application.routes.draw do
   resources :reviews
  end
 
- resources :cart
- 
- resources :orders do
-    resources :order_items
- end
- 
- 
 
+ 
+ 
+ 
+  
  resources :conversations do
    resources :messages
  end
+
+ resources :ur_stores
+
+ resources :categories
 
  resources :users
 end

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  
-  has_many :items
+  has_one :ur_store
+  has_many :items , through: :store
   has_many :reviews
   has_many :orders, dependent: :destroy
 
@@ -11,9 +11,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
-  def current_user?(user)
-     user == self
-  end
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

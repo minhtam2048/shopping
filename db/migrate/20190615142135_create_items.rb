@@ -8,6 +8,9 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :quantity, default: 1234
       t.decimal :price ,precision: 12, scale: 3, default: 10000
       t.boolean :active
+      
+      t.references :ur_store, foreign_key: true
+
       t.timestamps
     end
   end

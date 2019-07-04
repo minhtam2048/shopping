@@ -1,0 +1,39 @@
+<% provide :title, @category.name %>
+<h1><%= @category.name+"(#{@category.items.count})" %></h1>
+
+<div>
+  <%
+=begin%>
+ <ul class="row">
+       <%= render @items %>     
+  </ul>  
+<%
+=end%>
+
+<body class="woocommerce">
+  
+    <ul class="mystyle-products">
+    <% if @items.count == 0 %>
+          <h1>Don't have any items in this categories</h1>
+    <% else %>
+       <% @items.each do |item| %>
+      <li class="product">
+            <a href = "/items/<%= item.id %>">
+            <%= image_tag item.item_img.url(:item_index),class: "item" %>
+            </a>       
+          <h2><%= link_to item.name, item_path(item) %></h2>
+          
+          <span class="price">
+            <ins> <span class="amount"><%= item.price %></span> </ins>
+          </span>
+        
+        <button class="button_index" rel="nofollow" href="#">
+         Add to cart
+        </button>
+      </li>        
+      <% end %>  
+    <%end %>  
+    </ul>
+</body>
+</div>
+
